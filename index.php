@@ -13,6 +13,13 @@ $jobs = [
   ]
 ];
 
+// $var1 = 1;
+// if($var1 > 2) {
+//   echo 'es mayor que 2';
+// } else {
+//   echo 'no es mayor que 2';
+// }
+
 ?>
 
 <!doctype html>
@@ -62,36 +69,20 @@ $jobs = [
         <div>
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
-            <li class="work-position">
-              <h5><?php echo $jobs[0]['title']; ?></h5>
-              <p><?php echo $jobs[0]['description']; ?></p>
-              <strong>Achievements:</strong>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-              </ul>
-            </li>
-            <li class="work-position">
-                <h5><?php echo $jobs[1]['title']; ?></h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sapiente sed pariatur sint exercitationem eos expedita eveniet veniam ullam, quia neque facilis dicta voluptatibus. Eveniet doloremque ipsum itaque obcaecati nihil.</p>
-                <strong>Achievements:</strong>
-                <ul>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                </ul>
-              </li>
-              <li class="work-position">
-                  <h5><?php echo $jobs[2]['title']; ?></h5>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sapiente sed pariatur sint exercitationem eos expedita eveniet veniam ullam, quia neque facilis dicta voluptatibus. Eveniet doloremque ipsum itaque obcaecati nihil.</p>
-                  <strong>Achievements:</strong>
-                  <ul>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  </ul>
-                </li>
+            <?php
+            for($idx = 0;$idx < count($jobs); $idx++) {
+              echo '<li class="work-position">';
+              echo '<h5>' . $jobs[$idx]['title'] . '</h5>';
+              echo '<p>' . $jobs[$idx]['description'] . '</p>';
+              echo '<strong>Achievements:</strong>';
+              echo '<ul>';
+              echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+              echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+              echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+              echo '</ul>';
+              echo '</li>';
+            }
+            ?>
           </ul>
         </div>
         <div>
