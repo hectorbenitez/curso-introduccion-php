@@ -1,4 +1,5 @@
 <?php
+namespace App\Models;
 
 require_once 'Printable.php';
 
