@@ -2,3 +2,4 @@
 vendor/
 ._composer.phar
 composer.phar
+public/uploads
