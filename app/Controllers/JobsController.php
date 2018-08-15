@@ -13,6 +13,6 @@ class JobsController extends BaseController {
             $job->save();
         }
 
-        echo $this->renderHTML('addJob.twig');
+        return $this->renderHTML('addJob.twig');
     }
 }
