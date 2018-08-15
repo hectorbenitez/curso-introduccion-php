@@ -49,6 +49,14 @@ $map->post('saveJobs', '/jobs/add', [
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
 ]);
+$map->get('addUser', '/users/add', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUser'
+]);
+$map->post('saveUser', '/users/save', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'postSaveUser'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
