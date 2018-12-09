@@ -47,6 +47,14 @@ $map->get('index', '/', [
     'controller' => 'App\Controllers\IndexController',
     'action' => 'indexAction'
 ]);
+$map->get('indexJobs', '/jobs', [
+    'controller' => 'App\Controllers\JobsController',
+    'action' => 'indexAction'
+]);
+$map->get('deleteJobs', '/jobs/{id}/delete', [
+    'controller' => 'App\Controllers\JobsController',
+    'action' => 'deleteAction'
+]);
 $map->get('addJobs', '/jobs/add', [
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
@@ -115,6 +123,11 @@ if (!$route) {
         echo 'Protected route';
         die;
     }
+
+    foreach ($route->attributes as $key => $attribute) {
+        $request = $request->withAttribute($key, $attribute);
+    }
+
 
     $controller = new $controllerName;
     $response = $controller->$actionName($request);
