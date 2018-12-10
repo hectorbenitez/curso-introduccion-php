@@ -2,11 +2,20 @@
 namespace App\Controllers;
 
 use App\Models\Job;
+use App\Services\JobService;
 use Respect\Validation\Validator as v;
 use Zend\Diactoros\Response\RedirectResponse;
 use Zend\Diactoros\ServerRequest;
 
 class JobsController extends BaseController {
+    private $jobService;
+
+    public function __construct(JobService $jobService)
+    {
+        parent::__construct();
+        $this->jobService = $jobService;
+    }
+
     public function indexAction() {
         $jobs = Job::all();
         return $this->renderHTML('jobs/index.twig', compact('jobs'));
@@ -52,9 +61,7 @@ class JobsController extends BaseController {
     }
 
     public function deleteAction(ServerRequest $request) {
-        $jobId = $request->getAttribute('id');
-        $job = Job::find($jobId);
-        $job->delete();
+        $this->jobService->deleteJob($request->getAttribute('id'));
         return new RedirectResponse('/jobs');
     }
 }

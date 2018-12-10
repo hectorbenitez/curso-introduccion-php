@@ -14,6 +14,8 @@ $dotenv->load();
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Aura\Router\RouterContainer;
 
+$container = new DI\Container();
+
 $capsule = new Capsule;
 
 $capsule->addConnection([
@@ -129,7 +131,7 @@ if (!$route) {
     }
 
 
-    $controller = new $controllerName;
+    $controller = $container->get($controllerName);
     $response = $controller->$actionName($request);
 
     foreach($response->getHeaders() as $name => $values)
