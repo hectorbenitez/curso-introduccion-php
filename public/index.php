@@ -19,11 +19,12 @@ use WoohooLabs\Harmony\Middleware\DispatcherMiddleware;
 use WoohooLabs\Harmony\Middleware\HttpHandlerRunnerMiddleware;
 use Zend\Diactoros\Response;
 use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 $container = new DI\Container();
 
 $capsule = new Capsule;
-
 $capsule->addConnection([
     'driver'    => getenv('DB_DRIVER'),
     'host'      => getenv('DB_HOST'),
@@ -40,6 +41,9 @@ $capsule->addConnection([
 $capsule->setAsGlobal();
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
 $capsule->bootEloquent();
+
+$log = new Logger('app');
+$log->pushHandler(new StreamHandler(__DIR__ . '/../logs/app.log', Logger::WARNING));
 
 $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER,
@@ -102,15 +106,17 @@ $route = $matcher->match($request);
 try{
     $harmony = new Harmony($request, new Response());
 
-    $harmony
-        ->addMiddleware(new HttpHandlerRunnerMiddleware(new SapiEmitter()))
-        ->addMiddleware(new \Franzl\Middleware\Whoops\WhoopsMiddleware)
-        ->addMiddleware(new Middlewares\AuraRouter($routerContainer))
+    $harmony->addMiddleware(new HttpHandlerRunnerMiddleware(new SapiEmitter()));
+    if (getenv('DEBUG') === "true") {
+        $harmony->addMiddleware(new \Franzl\Middleware\Whoops\WhoopsMiddleware);
+    }
+    $harmony->addMiddleware(new Middlewares\AuraRouter($routerContainer))
         ->addMiddleware(new AuthenticationMiddleware())
         ->addMiddleware(new DispatcherMiddleware($container, 'request-handler'));
 
     $harmony();
 } catch (Exception $e) {
+    $log->error($e->getMessage());
     $emitter = new SapiEmitter();
     $emitter->emit(new Response\EmptyResponse(500));
 } catch (Error $e) {
