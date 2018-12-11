@@ -17,6 +17,7 @@
         "zendframework/zend-httphandlerrunner": "^1.0",
         "franzl/whoops-middleware": "^1.0",
         "monolog/monolog": "^1.24",
-        "robmorgan/phinx": "^0.10.6"
+        "robmorgan/phinx": "^0.10.6",
+        "symfony/console": "^4.2"
     }
 }
