@@ -99,12 +99,22 @@ $map->get('admin', '/admin', [
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
-$harmony = new Harmony($request, new Response());
+try{
+    $harmony = new Harmony($request, new Response());
 
-$harmony
-    ->addMiddleware(new HttpHandlerRunnerMiddleware(new SapiEmitter()))
-    ->addMiddleware(new Middlewares\AuraRouter($routerContainer))
-    ->addMiddleware(new AuthenticationMiddleware())
-    ->addMiddleware(new DispatcherMiddleware($container, 'request-handler'));
+    $harmony
+        ->addMiddleware(new \Franzl\Middleware\Whoops\WhoopsMiddleware)
+        ->addMiddleware(new HttpHandlerRunnerMiddleware(new SapiEmitter()))
+        ->addMiddleware(new Middlewares\AuraRouter($routerContainer))
+        ->addMiddleware(new AuthenticationMiddleware())
+        ->addMiddleware(new DispatcherMiddleware($container, 'request-handler'));
 
-$harmony();
+    $harmony();
+} catch (Exception $e) {
+    $emitter = new SapiEmitter();
+    $emitter->emit(new Response\EmptyResponse(500));
+} catch (Error $e) {
+    $emitter = new SapiEmitter();
+    $emitter->emit(new Response\EmptyResponse(500));
+}
+

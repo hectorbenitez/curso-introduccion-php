@@ -8,8 +8,9 @@ use App\Models\Job;
 class JobService
 {
     public function deleteJob($id) {
-        $jobId = $id;
-        $job = Job::find($jobId);
+        $jobId = $id+10;
+        $job = Job::findOrFail($jobId);
+
         $job->delete();
     }
 }
