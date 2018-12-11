@@ -14,6 +14,7 @@
         "php-di/php-di": "^6.0",
         "woohoolabs/harmony": "^6.0",
         "middlewares/aura-router": "^1.1",
-        "zendframework/zend-httphandlerrunner": "^1.0"
+        "zendframework/zend-httphandlerrunner": "^1.0",
+        "franzl/whoops-middleware": "^1.0"
     }
 }

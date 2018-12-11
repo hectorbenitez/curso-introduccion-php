@@ -103,8 +103,8 @@ try{
     $harmony = new Harmony($request, new Response());
 
     $harmony
-        ->addMiddleware(new \Franzl\Middleware\Whoops\WhoopsMiddleware)
         ->addMiddleware(new HttpHandlerRunnerMiddleware(new SapiEmitter()))
+        ->addMiddleware(new \Franzl\Middleware\Whoops\WhoopsMiddleware)
         ->addMiddleware(new Middlewares\AuraRouter($routerContainer))
         ->addMiddleware(new AuthenticationMiddleware())
         ->addMiddleware(new DispatcherMiddleware($container, 'request-handler'));

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a85cb02bab1b43f3003a63ef67ca83a3",
+    "content-hash": "f4a11112b54c0d0569e370cef2819d6e",
     "packages": [
         {
             "name": "aura/router",
@@ -121,6 +121,104 @@
                 "string"
             ],
             "time": "2018-01-09T20:05:19+00:00"
+        },
+        {
+            "name": "filp/whoops",
+            "version": "2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
+                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9 || ^7.0",
+                "psr/log": "^1.0.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9 || ^1.0",
+                "phpunit/phpunit": "^4.8.35 || ^5.7",
+                "symfony/var-dumper": "^2.6 || ^3.0 || ^4.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+                "whoops/soap": "Formats errors as SOAP responses"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whoops\\": "src/Whoops/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Dobreira",
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
+                }
+            ],
+            "description": "php error handling for cool kids",
+            "homepage": "https://filp.github.io/whoops/",
+            "keywords": [
+                "error",
+                "exception",
+                "handling",
+                "library",
+                "throwable",
+                "whoops"
+            ],
+            "time": "2018-10-23T09:00:00+00:00"
+        },
+        {
+            "name": "franzl/whoops-middleware",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/franzliedke/whoops-middleware.git",
+                "reference": "fd26c2211730121b9d4b20e11d8a9e854589afa2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/franzliedke/whoops-middleware/zipball/fd26c2211730121b9d4b20e11d8a9e854589afa2",
+                "reference": "fd26c2211730121b9d4b20e11d8a9e854589afa2",
+                "shasum": ""
+            },
+            "require": {
+                "filp/whoops": "^1.1 || ^2.0",
+                "zendframework/zend-diactoros": "^1.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.0.*",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "suggest": {
+                "psr/http-server-middleware": "In case you want to use PSR 15 middleware"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Franzl\\Middleware\\Whoops\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-04-11T21:03:54+00:00"
         },
         {
             "name": "illuminate/container",
