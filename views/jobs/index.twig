@@ -1,0 +1,19 @@
+{%  extends "layout.twig" %}
+
+{% block content %}
+    <div class="row">
+        <h1>Jobs</h1>
+        <table class="table">
+            <tr>
+                <th>Job Title</th>
+                <th>Delete</th>
+            </tr>
+            {% for job in jobs %}
+                <tr>
+                    <td>{{ job.title }}</td>
+                    <td><a href="/jobs/delete?id={{ job.id }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
