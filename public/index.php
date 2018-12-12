@@ -59,6 +59,14 @@ $map->get('index', '/', [
     'App\Controllers\IndexController',
     'indexAction'
 ]);
+$map->get('contact', '/contact', [
+    'App\Controllers\ContactController',
+    'indexAction'
+]);
+$map->post('sendContact', '/contact/send', [
+    'App\Controllers\ContactController',
+    'sendAction'
+]);
 $map->get('indexJobs', '/jobs', [
     'App\Controllers\JobsController',
     'indexAction'
