@@ -10,6 +10,15 @@
         "aura/router": "^3.1",
         "twig/twig": "^2.5",
         "respect/validation": "^1.1",
-        "vlucas/phpdotenv": "^2.5"
+        "vlucas/phpdotenv": "^2.5",
+        "php-di/php-di": "^6.0",
+        "woohoolabs/harmony": "^6.0",
+        "zendframework/zend-httphandlerrunner": "^1.0",
+        "middlewares/aura-router": "^1.1",
+        "filp/whoops": "^2.3",
+        "franzl/whoops-middleware": "^1.0",
+        "monolog/monolog": "^1.24",
+        "robmorgan/phinx": "^0.10.6",
+        "symfony/console": "^4.2"
     }
 }
