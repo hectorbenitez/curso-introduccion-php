@@ -31,5 +31,6 @@ use Symfony\Component\Console\Application;
 $application = new Application();
 
 $application->add(new \App\Commands\CreateUserCommand());
+$application->add(new \App\Commands\SendMailsCommand());
 
 $application->run();

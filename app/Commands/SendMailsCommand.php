@@ -1,20 +1,28 @@
 <?php
-namespace App\Controllers;
+
+namespace App\Commands;
+
 
 use App\Models\User;
-use Respect\Validation\Validator as v;
 use Swift_Mailer;
 use Swift_Message;
 use Swift_SmtpTransport;
-use Zend\Diactoros\Response\RedirectResponse;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
-class ContactController extends BaseController {
-    public function indexAction() {
-        return $this->renderHTML('contact/index.twig');
-    }
+class SendMailsCommand extends Command
+{
+    protected static $defaultName = 'app:send-mails';
 
-    public function sendAction($request) {
-        $postData = $request->getParsedBody();
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $postData = [
+            'name' => 'Test',
+            'mail' => 'mail',
+            'message' => 'msg'
+        ];
         $transport = (new Swift_SmtpTransport(getenv('SMTP_HOST'), getenv('SMTP_PORT')))
             ->setUsername(getenv('SMTP_USER'))
             ->setPassword(getenv('SMTP_PASS'));
@@ -29,8 +37,6 @@ class ContactController extends BaseController {
             )
         ;
 
-        $result = $mailer->send($message);
-
-        return new RedirectResponse('/contact');
+        $mailer->send($message);
     }
 }
