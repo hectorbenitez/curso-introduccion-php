@@ -1,0 +1,18 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>Contact me!</h1>
+            <form action="/contact/send" method="post">
+                <label for="">Name:</label>
+                <input type="text" name="name" ><br>
+                <label for="">Email:</label>
+                <input type="text" name="email"><br>
+                <label for="">Message:</label>
+                <input type="text" name="message"><br>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

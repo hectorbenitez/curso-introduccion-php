@@ -98,8 +98,15 @@ $map->post('auth', '/auth', [
 ]);
 $map->get('admin', '/admin', [
     'App\Controllers\AdminController',
-    'getIndex',
-    'auth' => true
+    'getIndex'
+]);
+$map->get('contactForm', '/contact', [
+    'App\Controllers\ContactController',
+    'index'
+]);
+$map->post('contactSend', '/contact/send', [
+    'App\Controllers\ContactController',
+    'send'
 ]);
 
 $matcher = $routerContainer->getMatcher();
