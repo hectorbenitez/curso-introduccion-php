@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\Message;
 use App\Models\User;
 use Respect\Validation\Validator as v;
 use Swift_Mailer;
@@ -15,21 +16,13 @@ class ContactController extends BaseController {
 
     public function sendAction($request) {
         $postData = $request->getParsedBody();
-        $transport = (new Swift_SmtpTransport(getenv('SMTP_HOST'), getenv('SMTP_PORT')))
-            ->setUsername(getenv('SMTP_USER'))
-            ->setPassword(getenv('SMTP_PASS'));
 
-        $mailer = new Swift_Mailer($transport);
-
-        $message = (new Swift_Message('Contact request'))
-            ->setFrom(['resume@domain.com' => 'Contact'])
-            ->setTo(['yourmail@domain.org'])
-            ->setBody('Hi, you have a new contact request from ' . $postData['name']
-                . '. Contact: ' . $postData['mail'] . ' with message: ' . $postData['message']
-            )
-        ;
-
-        $result = $mailer->send($message);
+        $message = new Message();
+        $message->name = $postData['name'];
+        $message->mail = $postData['mail'];
+        $message->message = $postData['message'];
+        $message->email_sent = false;
+        $message->save();
 
         return new RedirectResponse('/contact');
     }
