@@ -6,12 +6,12 @@ environments:
     default_migration_table: phinxlog
     default_database: development
     production:
-        adapter: mysql
-        host: localhost
-        name: production_db
-        user: root
-        pass: ''
-        port: 3306
+        adapter: '%%PHINX_DB_DRIVER%%'
+        host: '%%PHINX_DB_HOST%%'
+        name: '%%PHINX_DB_NAME%%'
+        user: '%%PHINX_DB_USER%%'
+        pass: '%%PHINX_DB_PASS%%'
+        port: '%%PHINX_DB_PORT%%'
         charset: utf8
 
     development:
