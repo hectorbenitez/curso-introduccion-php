@@ -1,0 +1,115 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  <div id="resume-header" class="row">
+      <div class="col-3">
+        <img id="profile-picture" src="https://ui-avatars.com/api/?name=John+Doe&size=255" alt="">
+      </div>
+      <div class="col">
+        <h1>{{ name }}</h1>
+        <h2>PHP Developer</h2>
+        <ul>
+          <li>Mail: hector@mail.com</li>
+          <li>Phone: 1234567890</li>
+          <li>LinkedIn: https://linkedin.com</li>
+          <li>Twitter: @hectorbenitez</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2 class="border-bottom-gray" >Carrer Summary</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div>
+          <h3 class="border-bottom-gray" >Work Experience</h3>
+            {% for job in jobs %}
+              <div class="row work-position">
+                  <div class="col-3">
+                      <img src="{{ job.getImage(job.title) }}" alt="" style="max-width: 100%">
+                  </div>
+                  <div class="col">
+                      <h5>{{ job.title }}</h5>
+                      <p>{{ job.months }} months</p>
+                      <p>{{ job.description }}</p>
+                  </div>
+              </div>
+            {% endfor %}
+        </div>
+        <div>
+            <h3 class="border-bottom-gray">Projects</h3>
+            <ul>
+            <?php
+            for($idx = 0;$idx < count($projects); $idx++) {
+              printElement($projects[$idx]);
+            }
+            ?>
+          </ul>
+
+            <div class="project">
+                <h5>Project X</h5>
+                <div class="row">
+                    <div class="col-3">
+                        <img id="profile-picture" src="https://ui-avatars.com/api/?name=John+Doe&size=255" alt="">
+                      </div>
+                      <div class="col">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum corporis at accusamus quisquam hic quos vel? Tenetur, ullam veniam consequatur esse quod cum, quam cupiditate assumenda natus maiores aperiam.</p>
+                        <strong>Technologies used:</strong>
+                        <span class="badge badge-secondary">PHP</span>
+                        <span class="badge badge-secondary">HTML</span>
+                        <span class="badge badge-secondary">CSS</span>
+                      </div>
+                </div>
+            </div>
+            <div class="project">
+                <h5>Project X</h5>
+                <div class="row">
+                    <div class="col-3">
+                        <img id="profile-picture" src="https://ui-avatars.com/api/?name=John+Doe&size=255" alt="">
+                      </div>
+                      <div class="col">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum corporis at accusamus quisquam hic quos vel? Tenetur, ullam veniam consequatur esse quod cum, quam cupiditate assumenda natus maiores aperiam.</p>
+                        <strong>Technologies used:</strong>
+                        <span class="badge badge-secondary">PHP</span>
+                        <span class="badge badge-secondary">HTML</span>
+                        <span class="badge badge-secondary">CSS</span>
+                      </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-3">
+        <h3 class="border-bottom-gray" >Skills & Tools</h3>
+        <h4>Backend</h4>
+        <ul>
+          <li>PHP</li>
+        </ul>
+        <h4>Frontend</h4>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+        </ul>
+        <h4>Frameworks</h4>
+        <ul>
+          <li>Laravel</li>
+          <li>Bootstrap</li>
+        </ul>
+        <h3 class="border-bottom-gray" >Languages</h3>
+        <ul>
+          <li>Spanish</li>
+          <li>English</li>
+        </ul>
+      </div>
+    </div>
+    <div id="resume-footer" class="row">
+      <div class="col">
+          Designed by @hectorbenitez
+      </div>
+    </div>
+{% endblock %}

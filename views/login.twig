@@ -1,0 +1,13 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<h1>Login</h1>
+<div class="alert alert-primary" role="alert">
+    {{ responseMessage }}
+</div>
+<form action="/auth" method="post" >
+    <input type="text" name="email" placeholder="Email" ><br>
+    <input type="password" name="password" placeholder="Password" ><br>
+    <button type="submit">Login</button>
+</form>
+{% endblock %}
