@@ -107,6 +107,11 @@ $map->get('admin', '/admin', [
     'App\Controllers\AdminController',
     'getIndex'
 ]);
+$map->get('admin.profile.changePassword', '/admin/profile/changePassword', [
+    'App\Controllers\ProfileController',
+    'changePassword'
+]);
+
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
@@ -128,6 +133,7 @@ try{
     $emitter = new SapiEmitter();
     $emitter->emit(new Response\EmptyResponse(500));
 } catch (Error $e) {
+    $log->error($e->getMessage());
     $emitter = new SapiEmitter();
     $emitter->emit(new Response\EmptyResponse(500));
 }
