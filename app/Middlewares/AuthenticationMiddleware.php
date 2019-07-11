@@ -21,7 +21,7 @@ class AuthenticationMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if ($request->getUri()->getPath() === '/admin') {
+        if (substr($request->getUri()->getPath(), 0, 6) === '/admin') {
             $sessionUserId = $_SESSION['userId'] ?? null;
             if (!$sessionUserId) {
                 return new EmptyResponse(401);
