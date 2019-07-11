@@ -67,27 +67,27 @@ $map->post('sendContact', '/contact/send', [
     'App\Controllers\ContactController',
     'sendAction'
 ]);
-$map->get('indexJobs', '/jobs', [
+$map->get('indexJobs', '/admin/jobs', [
     'App\Controllers\JobsController',
     'indexAction'
 ]);
-$map->get('deleteJobs', '/jobs/{id}/delete', [
+$map->get('deleteJobs', '/admin/jobs/{id}/delete', [
     'App\Controllers\JobsController',
     'deleteAction'
 ]);
-$map->get('addJobs', '/jobs/add', [
+$map->get('addJobs', '/admin/jobs/add', [
     'App\Controllers\JobsController',
     'getAddJobAction'
 ]);
-$map->post('saveJobs', '/jobs/add', [
+$map->post('saveJobs', '/admin/jobs/add', [
     \App\Controllers\JobsController::class,
     'getAddJobAction'
 ]);
-$map->get('addUser', '/users/add', [
+$map->get('addUser', '/admin/users/add', [
     'App\Controllers\UsersController',
     'getAddUser'
 ]);
-$map->post('saveUser', '/users/save', [
+$map->post('saveUser', '/admin/users/save', [
     'App\Controllers\UsersController',
     'postSaveUser'
 ]);
@@ -110,6 +110,10 @@ $map->get('admin', '/admin', [
 $map->get('admin.profile.changePassword', '/admin/profile/changePassword', [
     'App\Controllers\ProfileController',
     'changePassword'
+]);
+$map->post('admin.profile.savePassword', '/admin/profile/savePassword', [
+    'App\Controllers\ProfileController',
+    'savePassword'
 ]);
 
 
