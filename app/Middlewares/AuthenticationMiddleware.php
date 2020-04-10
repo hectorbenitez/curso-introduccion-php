@@ -21,10 +21,15 @@ class AuthenticationMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (substr($request->getUri()->getPath(), 0, 6) === '/admin') {
-            $sessionUserId = $_SESSION['userId'] ?? null;
-            if (!$sessionUserId) {
-                return new EmptyResponse(401);
+        $path = substr($request->getUri()->getPath(), 0, 6);
+        $authorizate_paths = ['/admin','/jobs','/jobs/add','/users','/users/add'];
+        $sessionUserId = $_SESSION['userId'] ?? null;
+
+        if($path == "/login" && $sessionUserId){
+            return new RedirectResponse('/admin');
+        }else if(in_array($path,$authorizate_paths)){
+            if(!$sessionUserId){
+                return new RedirectResponse('/login');
             }
         }
 
